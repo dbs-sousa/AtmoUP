@@ -1,5 +1,7 @@
 # Roadmap
 
-- [ ] Recriar o repositório `AtmoUP` no GitHub (conta `dbs-sousa`) e enviar os 119 arquivos do site.
-  - Conexão GitHub autorizada nesta conversa (sem link ao projeto).
-  - Pendente: definir visibilidade (privado ou público).
+- [x] Recriar o repositório `dbs-sousa/AtmoUP` (privado) e enviar os 119 arquivos do site — concluído, conteúdo conferido arquivo por arquivo.
+
+## Observações
+- A conexão GitHub está vinculada ao projeto; serve para novos envios sob demanda.
+- Não há sincronização automática: mudanças feitas depois precisam de um novo envio.
