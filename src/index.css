@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 243 91% 18%;
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 243 91% 18%;
+
+    /* Primary: #070552 - Azul profundo (confiança e solidez) */
+    --primary: 243 91% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: #A3D9FF - Azul claro (tecnologia e leveza) */
+    --secondary: 202 100% 81%;
+    --secondary-foreground: 243 91% 18%;
+
+    /* Muted backgrounds */
+    --muted: 202 100% 96%;
+    --muted-foreground: 0 0% 33%;
+
+    /* Accent: #F4C07A - Dourado suave e elegante (ação e destaque) */
+    --accent: 34 82% 72%;
+    --accent-foreground: 243 91% 18%;
+    --accent-hover: 38 72% 64%;
+
+    /* Destructive colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input */
+    --border: 202 80% 88%;
+    --input: 202 50% 92%;
+    --ring: 243 91% 18%;
+
+    /* Border radius */
+    --radius: 0.5rem;
+    
+    /* Brand colors - AtmoUP Clean Tech */
+    --brand-primary: 243 91% 18%;
+    --brand-secondary: 202 100% 81%;
+    --brand-accent: 34 82% 72%;
+    --brand-accent-hover: 38 72% 64%;
+    
+    /* Text colors */
+    --text-primary: 0 0% 20%;
+    --text-secondary: 0 0% 33%;
+    --text-muted: 0 0% 46%;
+    
+    /* Gradients - AtmoUP Clean Tech */
+    --gradient-hero: linear-gradient(135deg, hsl(243 91% 18%) 0%, hsl(202 100% 81%) 100%);
+    --gradient-hero-dark: linear-gradient(135deg, hsl(243 91% 18%) 0%, hsl(243 91% 12%) 100%);
+    --gradient-tech: linear-gradient(145deg, hsl(202 100% 98%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(202 100% 99%) 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(7, 5, 82, 0.85) 0%, rgba(7, 5, 82, 0.95) 100%);
+    --gradient-flow: linear-gradient(90deg, transparent 0%, hsl(34 82% 72% / 0.15) 50%, transparent 100%);
+    
+    /* Shadows - AtmoUP Clean Tech */
+    --shadow-xs: 0 1px 2px rgba(7, 5, 82, 0.05);
+    --shadow-sm: 0 2px 4px rgba(7, 5, 82, 0.08);
+    --shadow-md: 0 4px 12px rgba(7, 5, 82, 0.12);
+    --shadow-lg: 0 8px 24px rgba(7, 5, 82, 0.15);
+    --shadow-xl: 0 16px 40px rgba(7, 5, 82, 0.20);
+    --shadow-glow: 0 0 32px rgba(244, 192, 122, 0.30);
+    --shadow-glow-hover: 0 0 48px rgba(244, 192, 122, 0.45);
+    
+    /* Transitions */
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Base colors */
+    --background: 243 60% 10%;
+    --foreground: 202 100% 95%;
+
+    /* Card colors */
+    --card: 243 50% 12%;
+    --card-foreground: 202 100% 95%;
+
+    /* Popover colors */
+    --popover: 243 50% 12%;
+    --popover-foreground: 202 100% 95%;
+
+    /* Primary */
+    --primary: 202 100% 81%;
+    --primary-foreground: 243 91% 18%;
+
+    /* Secondary */
+    --secondary: 243 60% 20%;
+    --secondary-foreground: 202 100% 95%;
+
+    /* Muted */
+    --muted: 243 40% 15%;
+    --muted-foreground: 202 50% 70%;
+
+    /* Accent */
+    --accent: 34 82% 72%;
+    --accent-foreground: 243 91% 18%;
+    --accent-hover: 38 72% 64%;
+
+    /* Destructive */
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input */
+    --border: 243 40% 20%;
+    --input: 243 40% 20%;
+    --ring: 202 100% 81%;
+    
+    /* Brand colors */
+    --brand-primary: 243 91% 28%;
+    --brand-secondary: 202 100% 81%;
+    --brand-accent: 34 82% 72%;
+    --brand-accent-hover: 38 72% 64%;
+    
+    /* Text colors */
+    --text-primary: 0 0% 90%;
+    --text-secondary: 0 0% 75%;
+    --text-muted: 0 0% 60%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(243 91% 18%) 0%, hsl(243 91% 10%) 100%);
+    --gradient-hero-dark: linear-gradient(135deg, hsl(243 91% 15%) 0%, hsl(243 91% 8%) 100%);
+    --gradient-tech: linear-gradient(145deg, hsl(243 50% 12%) 0%, hsl(243 50% 15%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(243 50% 12%) 0%, hsl(243 50% 10%) 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(7, 5, 82, 0.7) 0%, rgba(7, 5, 82, 0.9) 100%);
+    
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 32px rgba(244, 192, 122, 0.40);
+    --shadow-glow-hover: 0 0 48px rgba(244, 192, 122, 0.60);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+  
+  p {
+    @apply text-base leading-relaxed;
+  }
+  
+  a {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-tech {
+    background: var(--gradient-tech);
+  }
+  
+  .shadow-industrial {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-base);
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-air-flow {
+    animation: airFlow 3s ease-in-out infinite;
+  }
+  
+  @keyframes airFlow {
+    0%, 100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulseSlow 4s ease-in-out infinite;
+  }
+  
+  @keyframes pulseSlow {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
