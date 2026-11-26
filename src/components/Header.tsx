@@ -42,12 +42,12 @@ const Header = () => {
         <Link to="/" className="flex items-center shrink-0">
           <img
             src={logoLight}
-            alt="ATMOUP — Engenharia de Equipamentos Industriais"
+            alt="AtmoUP — Engenharia de Equipamentos Industriais"
             className="h-14 md:h-16 w-auto dark:hidden"
           />
           <img
             src={logoDark}
-            alt="ATMOUP — Engenharia de Equipamentos Industriais"
+            alt="AtmoUP — Engenharia de Equipamentos Industriais"
             className="h-14 md:h-16 w-auto hidden dark:block"
           />
         </Link>

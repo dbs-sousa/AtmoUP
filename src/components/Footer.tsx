@@ -12,11 +12,11 @@ const Footer = () => {
           <div className="space-y-4">
             <img
               src={logoDark}
-              alt="ATMOUP — Engenharia de Equipamentos Industriais"
+              alt="AtmoUP — Engenharia de Equipamentos Industriais"
               className="h-14 w-auto"
             />
             <p className="text-xs font-semibold uppercase tracking-wider text-accent">
-              ATMOUP — Engenharia de Equipamentos Industriais
+              AtmoUP — Engenharia de Equipamentos Industriais
             </p>
             <p className="text-sm text-primary-foreground/80">
               Engenharia aplicada para elevar o desempenho, a confiabilidade e a eficiência dos equipamentos e sistemas industriais.
@@ -27,7 +27,7 @@ const Footer = () => {
                   href={CONTACT_CONFIG.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="LinkedIn da ATMOUP"
+                  aria-label="LinkedIn da AtmoUP"
                   className="text-primary-foreground/70 hover:text-secondary transition-colors inline-flex items-center gap-2 text-sm"
                 >
                   <Linkedin className="h-5 w-5" />

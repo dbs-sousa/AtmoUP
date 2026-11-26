@@ -59,7 +59,7 @@ const Home = () => {
   return (
     <main className="flex flex-col">
       <PageSeo
-        title="ATMOUP — Engenharia de Equipamentos Industriais"
+        title="AtmoUP — Engenharia de Equipamentos Industriais"
         description="Engenharia de equipamentos industriais em São Paulo com atendimento nacional. Diagnóstico técnico, engenharia de implantação, retrofit e engenharia de performance."
         path="/"
         schema={homeSchema}
@@ -80,7 +80,7 @@ const Home = () => {
         <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent mb-4">
-              ATMOUP · Engenharia de Equipamentos Industriais
+              AtmoUP · Engenharia de Equipamentos Industriais
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.08] tracking-tight">
               Engenharia para elevar o desempenho industrial.

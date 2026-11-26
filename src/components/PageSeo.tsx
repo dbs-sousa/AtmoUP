@@ -10,12 +10,15 @@ interface PageSeoProps {
   title: string;
   description: string;
   path: string;
+  image?: string;
+  noindex?: boolean;
   breadcrumbs?: BreadcrumbItem[];
   schema?: Record<string, unknown>;
 }
 
-const PageSeo = ({ title, description, path, breadcrumbs, schema }: PageSeoProps) => {
+const PageSeo = ({ title, description, path, image, noindex = false, breadcrumbs, schema }: PageSeoProps) => {
   const canonicalUrl = `${BASE_URL}${path === "/" ? "/" : path}`;
+  const imageUrl = image ?? `${BASE_URL}/og-image.jpg`;
 
   const breadcrumbSchema = breadcrumbs
     ? {
@@ -34,12 +37,15 @@ const PageSeo = ({ title, description, path, breadcrumbs, schema }: PageSeoProps
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
       <link rel="canonical" href={canonicalUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:image" content={imageUrl} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={imageUrl} />
       {breadcrumbSchema && (
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       )}

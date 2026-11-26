@@ -17,6 +17,9 @@ import Cases from "./pages/Cases";
 import ConteudoTecnico from "./pages/ConteudoTecnico";
 import ArtigoDetalhe from "./pages/ArtigoDetalhe";
 import NotFound from "./pages/NotFound";
+import Obrigado from "./pages/Obrigado";
+import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
+import LeadAttribution from "./components/LeadAttribution";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +29,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <LeadAttribution />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -43,6 +47,8 @@ const App = () => (
             <Route path="/conteudo/:slug" element={<ArtigoDetalhe />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/obrigado" element={<Obrigado />} />
+            <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
             <Route path="/servicos" element={<Navigate to="/engenharia-de-equipamentos" replace />} />
             <Route path="/produtos" element={<Navigate to="/equipamentos" replace />} />
             <Route path="/artigos" element={<Navigate to="/conteudo" replace />} />

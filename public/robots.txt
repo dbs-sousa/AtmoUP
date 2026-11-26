@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://atmoup-air-solution.lovable.app/sitemap.xml
+Sitemap: https://www.atmoup.com.br/sitemap.xml

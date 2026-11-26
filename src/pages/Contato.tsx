@@ -1,91 +1,14 @@
-import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
-import { Phone, Mail, MapPin, Clock, Info } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import PageSeo from "@/components/PageSeo";
-import { CONTACT_CONFIG, LEAD_NEED_TYPES } from "@/config/site";
+import LeadForm from "@/components/LeadForm";
+import { CONTACT_CONFIG } from "@/config/site";
 
 const Contato = () => {
   const [searchParams] = useSearchParams();
   const source = searchParams.get("origem")?.trim() || "pagina-contato";
-  const [submitting, setSubmitting] = useState(false);
-  const [channelNotice, setChannelNotice] = useState(false);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    role: "",
-    email: "",
-    phone: "",
-    segment: "",
-    equipment: "",
-    needType: "",
-    message: "",
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (
-      !formData.name.trim() ||
-      !formData.company.trim() ||
-      !formData.email.trim() ||
-      !formData.needType ||
-      !formData.message.trim()
-    ) {
-      toast.error("Por favor, preencha os campos obrigatórios.");
-      return;
-    }
-
-    if (!CONTACT_CONFIG.leadEndpoint) {
-      setChannelNotice(true);
-      toast.warning(
-        "Formulário preparado para envio. Configure o canal de recebimento antes da publicação."
-      );
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      const response = await fetch(CONTACT_CONFIG.leadEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source,
-          submittedAt: new Date().toISOString(),
-          ...formData,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Falha ao enviar demanda");
-      }
-
-      toast.success("Demanda técnica transmitida com sucesso.");
-      setFormData({
-        name: "",
-        company: "",
-        role: "",
-        email: "",
-        phone: "",
-        segment: "",
-        equipment: "",
-        needType: "",
-        message: "",
-      });
-    } catch {
-      toast.error(
-        "Não foi possível transmitir sua demanda no momento. Tente novamente em instantes."
-      );
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
   const contactInfo = [
     {
       icon: Phone,
@@ -111,7 +34,7 @@ const Contato = () => {
       content: CONTACT_CONFIG.businessHours,
       link: null,
     },
-  ];
+  ].filter((info) => info.title !== "Telefone" && info.title !== "E-mail" || Boolean(info.link));
 
   return (
     <main className="flex flex-col">
@@ -145,157 +68,7 @@ const Contato = () => {
               <h2 className="text-2xl font-bold text-primary mb-6">
                 Solicitar avaliação técnica
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <input type="hidden" name="source" value={source} />
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-primary mb-1.5">
-                      Nome *
-                    </label>
-                    <Input
-                      id="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Seu nome"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-semibold text-primary mb-1.5">
-                      Empresa *
-                    </label>
-                    <Input
-                      id="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="Nome da empresa"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="role" className="block text-sm font-semibold text-primary mb-1.5">
-                      Cargo
-                    </label>
-                    <Input
-                      id="role"
-                      type="text"
-                      value={formData.role}
-                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      placeholder="Ex.: Gerente de Engenharia"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-primary mb-1.5">
-                      E-mail corporativo *
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="seu@empresa.com.br"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold text-primary mb-1.5">
-                      Telefone / WhatsApp
-                    </label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="DDD + número"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="segment" className="block text-sm font-semibold text-primary mb-1.5">
-                      Segmento industrial
-                    </label>
-                    <Input
-                      id="segment"
-                      type="text"
-                      value={formData.segment}
-                      onChange={(e) => setFormData({ ...formData, segment: e.target.value })}
-                      placeholder="Ex.: Siderurgia, Metalurgia, Agroindústria"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="equipment" className="block text-sm font-semibold text-primary mb-1.5">
-                      Equipamento ou sistema
-                    </label>
-                    <Input
-                      id="equipment"
-                      type="text"
-                      value={formData.equipment}
-                      onChange={(e) => setFormData({ ...formData, equipment: e.target.value })}
-                      placeholder="Ex.: Ventilador industrial, filtro de mangas"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="needType" className="block text-sm font-semibold text-primary mb-1.5">
-                      Tipo de necessidade *
-                    </label>
-                    <select
-                      id="needType"
-                      value={formData.needType}
-                      onChange={(e) => setFormData({ ...formData, needType: e.target.value })}
-                      required
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    >
-                      <option value="">Selecione o tipo de necessidade</option>
-                      {LEAD_NEED_TYPES.map((type) => (
-                        <option key={type} value={type}>
-                          {type}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-primary mb-1.5">
-                    Descrição da demanda *
-                  </label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Descreva brevemente o equipamento, o cenário operacional ou a necessidade técnica"
-                    rows={5}
-                    required
-                  />
-                </div>
-
-                {channelNotice && !CONTACT_CONFIG.leadEndpoint && (
-                  <div
-                    role="status"
-                    className="flex items-start gap-2.5 rounded-lg border border-accent/50 bg-accent/10 p-3.5 text-sm text-primary"
-                  >
-                    <Info className="h-4 w-4 shrink-0 mt-0.5 text-primary" />
-                    <p>
-                      Formulário preparado para envio. Configure o canal de recebimento antes da publicação.
-                    </p>
-                  </div>
-                )}
-
-                <Button type="submit" size="lg" variant="accent" className="w-full" disabled={submitting}>
-                  {submitting ? "Enviando..." : "Solicitar avaliação técnica"}
-                </Button>
-              </form>
+              <LeadForm source={source} />
             </div>
 
             {/* Contact Info */}

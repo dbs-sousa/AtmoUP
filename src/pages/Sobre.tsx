@@ -57,7 +57,7 @@ const Sobre = () => {
     <main className="flex flex-col">
       <PageSeo
         title="A AtmoUP — Engenharia de Equipamentos Industriais"
-        description="Conheça o posicionamento e a atuação da ATMOUP — Engenharia de Equipamentos Industriais: diagnóstico técnico, implantação, retrofit e engenharia de performance."
+        description="Conheça o posicionamento e a atuação da AtmoUP — Engenharia de Equipamentos Industriais: diagnóstico técnico, implantação, retrofit e engenharia de performance."
         path="/sobre"
         breadcrumbs={[
           { name: "Home", path: "/" },
@@ -69,7 +69,7 @@ const Sobre = () => {
       <section className="bg-primary text-primary-foreground py-16 md:py-24" aria-labelledby="sobre-title">
         <div className="container mx-auto px-4 md:px-6 max-w-4xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">
-            ATMOUP — Engenharia de Equipamentos Industriais
+            AtmoUP — Engenharia de Equipamentos Industriais
           </p>
           <h1 id="sobre-title" className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
             Engenharia para elevar o desempenho industrial.
